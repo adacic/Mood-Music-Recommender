@@ -1,4 +1,5 @@
-import "https://deno.land/std@0.208.0/dotenv/load.ts";
+import "https://deno.land/x/dotenv/load.ts";
+
 import {
   AnthropicModelProvider,
   createZypherContext,
@@ -15,7 +16,7 @@ function getRequiredEnv(name: string): string {
   }
   return value;
 }
-
+console.log(Deno.env.toObject());
 
 // Initialize the agent execution context
 const zypherContext = await createZypherContext(Deno.cwd());
@@ -40,6 +41,7 @@ await agent.mcp.registerServer({
     },
   },
 });
+
 
 const mood = prompt("What is your today's mood?");
 
